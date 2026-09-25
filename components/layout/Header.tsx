@@ -37,6 +37,13 @@ export function Header() {
 
   return (
     <>
+      {/* Mobile floating bar — visible only on small screens */}
+      {!scrolled && (
+        <div className="lg:hidden fixed top-8 inset-x-0 z-40 h-12 pointer-events-none">
+          <div className="bg-gradient-to-b from-ink/40 to-transparent h-full" />
+        </div>
+      )}
+
       <header
         className={cn(
           'fixed top-8 inset-x-0 z-50 transition-all duration-500',
@@ -51,8 +58,8 @@ export function Header() {
           scrolled ? 'opacity-100' : 'opacity-50',
         )} />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-          <Logo size="sm" className="relative group" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-2">
+          <Logo size="sm" className="relative group shrink-0" />
 
           <nav className="hidden lg:flex items-center gap-7">
             {NAV.map((item) => {
@@ -82,7 +89,7 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/login"
               className="hidden md:inline-flex font-cinzel text-[10px] tracking-wide-cap text-ink-soft hover:text-crimson transition-colors relative group"
@@ -92,20 +99,17 @@ export function Header() {
             </Link>
             <Link
               href="/register"
-              className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-br from-crimson via-crimson-deep to-vermilion text-alabaster font-cinzel text-[10px] tracking-wide-cap shadow-polaroid hover:shadow-glow transition-all press relative overflow-hidden group border border-gold/40"
+              className="hidden md:inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-br from-crimson via-crimson-deep to-vermilion text-alabaster font-cinzel text-[10px] tracking-wide-cap shadow-polaroid hover:shadow-glow transition-all press relative overflow-hidden group border border-gold/40"
             >
               <span className="absolute inset-0 shimmer-gold opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative">Begin Journey</span>
-              <svg className="relative ml-1.5 w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14m-7-7l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
             </Link>
             <button
               aria-label="Menu"
               onClick={() => setMobileOpen((o) => !o)}
-              className="lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-ink hover:bg-crimson/5 transition-colors border border-gold/30"
+              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-ink hover:bg-crimson/5 transition-colors border border-gold/30"
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
                 <line x1="3" y1="6" x2="19" y2="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={cn('transition-all', mobileOpen && 'translate-y-2.5 rotate-45')} />
                 <line x1="3" y1="11" x2="19" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={cn('transition-opacity', mobileOpen && 'opacity-0')} />
                 <line x1="3" y1="16" x2="19" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={cn('transition-all', mobileOpen && '-translate-y-2.5 -rotate-45')} />
