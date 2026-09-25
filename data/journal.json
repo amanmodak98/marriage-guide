@@ -1,0 +1,92 @@
+[
+  {
+    "id": "j-1",
+    "slug": "art-of-the-first-meeting",
+    "title": "The Art of the First Meeting: A Modern Matchmaker's Guide",
+    "excerpt": "Why the first coffee is never really about coffee — and how to make it count.",
+    "body": "In an age of infinite swipes, the first meeting has become more precious than ever...",
+    "cover": "https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-09-15",
+    "readTime": "6 min",
+    "tags": [
+      "matchmaking",
+      "advice"
+    ]
+  },
+  {
+    "id": "j-2",
+    "slug": "rethinking-arranged-marriage",
+    "title": "Rethinking the Arranged Marriage: Tradition Meets Choice",
+    "excerpt": "How modern Indian families are rewriting the rules of matchmaking without losing their soul.",
+    "body": "The word \"arranged\" carries centuries of weight. But today, a new generation is reclaiming it...",
+    "cover": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-09-01",
+    "readTime": "8 min",
+    "tags": [
+      "tradition",
+      "culture"
+    ]
+  },
+  {
+    "id": "j-3",
+    "slug": "craft-of-the-biodata",
+    "title": "The Craft of the Biodata: Telling Your Story Without Sounding Like a CV",
+    "excerpt": "Five principles for writing a marriage biodata that feels like you.",
+    "body": "A biodata is the most important document you will write this year. It is also the most personal...",
+    "cover": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-08-20",
+    "readTime": "5 min",
+    "tags": [
+      "profile",
+      "advice"
+    ]
+  },
+  {
+    "id": "j-4",
+    "slug": "weddings-as-art",
+    "title": "Weddings as Art: Why the Small Details Matter Most",
+    "excerpt": "A meditation on florals, fonts, and the quiet work of making a day unforgettable.",
+    "body": "Every wedding is a small opera. The costumes, the set, the music — and the singular fact that everyone you love is in the same room...",
+    "cover": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-08-05",
+    "readTime": "7 min",
+    "tags": [
+      "wedding",
+      "culture"
+    ]
+  },
+  {
+    "id": "j-5",
+    "slug": "meet-the-parents",
+    "title": "Meet the Parents: A Field Guide for the Modern Couple",
+    "excerpt": "Practical wisdom and small courtesies for that most Indian of occasions.",
+    "body": "There is no social event quite like the first \"meet the parents.\" It is theatre, diplomacy, and a job interview rolled into one...",
+    "cover": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-07-22",
+    "readTime": "6 min",
+    "tags": [
+      "advice",
+      "family"
+    ]
+  },
+  {
+    "id": "j-6",
+    "slug": "language-of-compromise",
+    "title": "The Language of Compromise: What Long Marriages Teach Us",
+    "excerpt": "Notes from a hundred couples on what made their partnership last.",
+    "body": "I spent the last six months interviewing couples who have been married for forty years and longer. The pattern was unmistakable...",
+    "cover": "https://images.unsplash.com/photo-1494774157365-9888e5d3a8a1?auto=format&fit=crop&w=1400&q=80",
+    "author": "Aanya Sharma",
+    "date": "2025-07-10",
+    "readTime": "9 min",
+    "tags": [
+      "marriage",
+      "wisdom"
+    ]
+  }
+]

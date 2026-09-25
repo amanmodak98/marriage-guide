@@ -1,0 +1,488 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --crimson: #8B1E3F;
+  --crimson-deep: #5C1126;
+  --terracotta: #B23A48;
+  --vermilion: #C75146;
+  --rose: #E8927C;
+  --alabaster: #FAF7F2;
+  --ivory: #F5EFE6;
+  --parchment: #EDE5D8;
+  --gold: #C9A961;
+  --gold-bright: #E8C77C;
+  --gold-dark: #8B6F3A;
+  --ink: #2B1810;
+  --ink-soft: #5C3A2E;
+  --ink-mute: #8B6F5E;
+  --emerald: #1F4F3F;
+  --lapis: #1E3A5F;
+
+  --bg-primary: var(--alabaster);
+  --bg-secondary: var(--ivory);
+  --bg-tertiary: var(--parchment);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+  --accent-primary: var(--crimson);
+  --accent-warm: var(--terracotta);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-feature-settings: "kern", "liga", "calt";
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- Subtle warm vignette overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at top, transparent 0%, transparent 60%, rgba(139, 30, 63, 0.04) 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  animation: grainDrift 12s steps(8) infinite;
+}
+
+/* --- Typography refinements --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.font-italiana {
+  font-family: var(--font-italiana), serif;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* --- Selection --- */
+::selection {
+  background: var(--crimson);
+  color: var(--alabaster);
+}
+
+/* --- Glassmorphism --- */
+.glass {
+  background: rgba(250, 247, 242, 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(139, 30, 63, 0.12);
+  box-shadow: 0 20px 60px -20px rgba(43, 24, 16, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(43, 24, 16, 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  color: var(--ivory);
+}
+
+.glass-cream {
+  background: rgba(245, 239, 230, 0.78);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(139, 30, 63, 0.08);
+}
+
+.glass-strong {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(139, 30, 63, 0.15);
+  box-shadow: 0 25px 80px -25px rgba(43, 24, 16, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* --- Paper texture for polaroids --- */
+.paper {
+  background-color: #FFFEF9;
+  background-image:
+    linear-gradient(rgba(139, 30, 63, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 30, 63, 0.015) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.05), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(232, 146, 124, 0.05), transparent 50%);
+  background-size: 4px 4px, 4px 4px, 100% 100%, 100% 100%;
+}
+
+/* --- Gold shimmer for hover states --- */
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 169, 97, 0) 40%,
+    rgba(201, 169, 97, 0.4) 50%,
+    rgba(201, 169, 97, 0) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* --- Polaroid tilt on hover --- */
+.polaroid {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+  will-change: transform;
+}
+
+.polaroid:hover {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-12px) scale(1.02) !important;
+  box-shadow: 0 30px 60px -15px rgba(43, 24, 16, 0.45), 0 12px 24px -8px rgba(43, 24, 16, 0.25);
+}
+
+/* --- Hand-drawn underline --- */
+.hand-underline {
+  background-image: linear-gradient(transparent calc(100% - 6px), var(--gold) 6px);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-bottom: 2px;
+}
+
+.hand-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold-dark);
+}
+
+.hand-divider::before,
+.hand-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* --- Custom scrollbar --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--terracotta), var(--crimson));
+  border-radius: 4px;
+  border: 2px solid var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crimson);
+}
+
+/* --- Reveal on scroll utility --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* --- Decorative floral corner --- */
+.corner-flourish {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* --- Subtle button press --- */
+.press {
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+}
+.press:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+/* --- Hand-drawn input focus --- */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(139, 30, 63, 0.1);
+}
+
+/* --- Diagonal pattern accent --- */
+.diag-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(139, 30, 63, 0.04) 10px,
+    rgba(139, 30, 63, 0.04) 11px
+  );
+}
+
+/* --- Wedding ring background pattern --- */
+.wedding-rings-bg {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    transparent 0,
+    transparent 80px,
+    rgba(201, 169, 97, 0.06) 80px,
+    rgba(201, 169, 97, 0.06) 82px
+  );
+}
+
+/* --- Text gradient --- */
+.text-gradient-red {
+  background: linear-gradient(135deg, #C75146 0%, #8B1E3F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #E8C77C 0%, #A88845 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Soft section divider --- */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto;
+  width: fit-content;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+/* --- Hide scrollbar utility --- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Shimmer text effect --- */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--crimson) 0%,
+    var(--vermilion) 30%,
+    var(--gold) 50%,
+    var(--vermilion) 70%,
+    var(--crimson) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* --- Hero glow --- */
+.hero-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(199, 81, 70, 0.15) 0%,
+    transparent 60%
+  );
+}
+
+/* --- Marquee --- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* --- Heartbeat pulse --- */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.08); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.06); }
+  40% { transform: scale(1); }
+}
+.heartbeat {
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+/* --- Fade in scale --- */
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* --- Slide reveal --- */
+@keyframes slideReveal {
+  from { transform: translateY(40px); opacity: 0; filter: blur(8px); }
+  to { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+.animate-slide-reveal {
+  animation: slideReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- Smooth bounce --- */
+@keyframes smoothBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-smooth-bounce {
+  animation: smoothBounce 3s ease-in-out infinite;
+}
+
+/* --- Radial pulse --- */
+@keyframes radialPulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.animate-radial-pulse {
+  animation: radialPulse 2s ease-out infinite;
+}
+
+/* --- Border draw --- */
+@keyframes borderDraw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* --- Lotus bloom (scale + rotate on view) --- */
+@keyframes lotusBloom {
+  0% { transform: scale(0) rotate(-90deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.lotus-bloom {
+  animation: lotusBloom 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* --- Chhatri unfold --- */
+@keyframes chhatriUnfold {
+  from {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    opacity: 0;
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}
+
+/* --- Royal seal stamp --- */
+@keyframes royalStamp {
+  0% { transform: scale(2.5) rotate(-20deg); opacity: 0; }
+  50% { transform: scale(0.9) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.royal-stamp {
+  animation: royalStamp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* --- Drawn-in arabesque --- */
+.draw-arabesque {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: borderDraw 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* --- Slow paisley rotate --- */
+@keyframes paisleyRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.paisley-rotate {
+  animation: paisleyRotate 60s linear infinite;
+}
+
+/* --- Gold glow pulse --- */
+@keyframes goldGlowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(201, 169, 97, 0.4)); }
+  50% { filter: drop-shadow(0 0 14px rgba(232, 199, 124, 0.7)); }
+}
+.gold-glow-pulse {
+  animation: goldGlowPulse 3s ease-in-out infinite;
+}
+
+/* --- Mughal arch reveal --- */
+.arch-reveal {
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%);
+  transition: clip-path 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.arch-reveal.is-visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* --- Sparkle (gem flash) --- */
+@keyframes sparkleFlash {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+.sparkle-flash {
+  animation: sparkleFlash 2s ease-in-out infinite;
+}
+
+/* --- Letter spacing for ornate caps --- */
+.tracking-mughal {
+  letter-spacing: 0.32em;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
